@@ -20,6 +20,9 @@ const config: webpack.Configuration = {
       }
     ]
   },
+  externals: {
+    "ms-rest-js": "msRest"
+  },
   resolve: {
     extensions: [".tsx", ".ts", ".js"]
   },
