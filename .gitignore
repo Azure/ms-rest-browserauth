@@ -85,7 +85,7 @@ output/*
 
 # Typescript output
 dist/
-typings/
+es/
 *.js
 *.js.map
 
