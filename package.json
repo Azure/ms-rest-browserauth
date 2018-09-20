@@ -30,10 +30,12 @@
   "types": "./dist/lib/index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "ms-rest-js": "^0.21.406",
+    "adal-angular": "^1.0.17",
+    "ms-rest-js": "^0.22.423",
     "tslib": "^1.9.2"
   },
   "devDependencies": {
+    "@types/adal-angular": "^1.0.1",
     "@types/glob": "^5.0.35",
     "@types/mocha": "^5.2.0",
     "@types/should": "^8.1.30",
