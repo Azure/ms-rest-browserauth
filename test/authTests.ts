@@ -2,5 +2,5 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 describe("ms-rest-browserauth", function() {
-  it("should work");
+  it("no tests to run");
 });

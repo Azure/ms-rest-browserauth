@@ -149,8 +149,8 @@ export class AuthManager {
               isLoggedIn: true,
               creds,
               availableSubscriptions
-            })
-          })
+            });
+          });
         }
       });
     });
