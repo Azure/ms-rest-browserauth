@@ -31,6 +31,7 @@
   "license": "MIT",
   "dependencies": {
     "adal-angular": "^1.0.17",
+    "ms-rest-azure-env": "^0.1.1",
     "ms-rest-js": "^0.22.423",
     "tslib": "^1.9.2"
   },
