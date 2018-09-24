@@ -3,8 +3,7 @@
 
 import AuthenticationContext from "adal-angular";
 import { RestError, ServiceClientCredentials, HttpHeaders, ServiceClient } from "ms-rest-js";
-
-const DEFAULT_RESOURCE = "https://management.azure.com";
+import { AzureEnvironment } from "ms-rest-azure-env";
 
 export interface AuthOptions {
   /**
@@ -23,7 +22,12 @@ export interface AuthOptions {
   redirectUri?: string;
 
   /**
-   * The resource to authenticate to. Defaults to https://management.azure.com.
+   * The environment to use for authentication. Defaults to AzureEnvironment.Azure.
+   */
+  environment?: AzureEnvironment;
+
+  /**
+   * The resource to authenticate to. Defaults to environment.resourceManagerEndpointUrl.
    */
   resource?: string;
 }
@@ -88,7 +92,8 @@ export type LoginResult = LoggedIn | NotLoggedIn;
  */
 export class AuthManager {
   private readonly _ctx: AuthenticationContext;
-  private readonly resource: string;
+  private readonly _resource: string;
+  private readonly _env: AzureEnvironment;
 
   constructor(opts: AuthOptions) {
     this._ctx = new AuthenticationContext({
@@ -97,7 +102,8 @@ export class AuthManager {
       redirectUri: opts.redirectUri,
       cacheLocation: "localStorage"
     });
-    this.resource = opts.resource || DEFAULT_RESOURCE;
+    this._env = opts.environment || AzureEnvironment.Azure;
+    this._resource = opts.resource || this._env.resourceManagerEndpointUrl;
 
     // These calls put the AuthenticationContext in a proper state to complete the login.
     this._ctx.getCachedUser();
@@ -120,18 +126,19 @@ export class AuthManager {
    */
   finalizeLogin(): Promise<LoginResult> {
     return new Promise((resolve, reject) => {
-      this._ctx.acquireToken(this.resource, (errMessage, token, errCode) => {
+      this._ctx.acquireToken(this._resource, (errMessage, token, errCode) => {
         if (errCode === "login required") {
           resolve({ isLoggedIn: false });
         } else if (errCode === "interaction_required") {
-          this._ctx.acquireTokenRedirect(this.resource);
+          this._ctx.acquireTokenRedirect(this._resource);
         } else if (errCode || !token) {
           reject(new RestError(errMessage || "Unknown error", errCode));
         } else {
-          const creds: ServiceClientCredentials = {
+          const creds: ServiceClientCredentials & { environment: AzureEnvironment } = {
+            environment: this._env,
             signRequest: req => {
               return new Promise((resolve, reject) => {
-                this._ctx.acquireToken(this.resource, (err, token) => {
+                this._ctx.acquireToken(this._resource, (err, token) => {
                   if (err || !token) {
                     reject(err);
                   } else {
@@ -165,7 +172,7 @@ export class AuthManager {
 
   private _listSubscriptions(credentials: ServiceClientCredentials): Promise<any[]> {
     const client = new ServiceClient(credentials);
-    const baseUrl = this.resource;
+    const baseUrl = this._resource;
     const reqUrl = `${baseUrl}${baseUrl.endsWith("/") ? "" : "/"}subscriptions?api-version=2016-06-01`;
 
     return client.sendRequest({
