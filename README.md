@@ -1,3 +1,9 @@
+# ms-rest-browserauth
+
+Provides browser-based authentication for Azure resources. Designed for use with libraries in [azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js).
+
+## Requirements
+- node.js version > 6.x
 
 # Contributing
 
