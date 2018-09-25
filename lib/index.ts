@@ -7,7 +7,7 @@ import { AzureEnvironment } from "ms-rest-azure-env";
 
 export interface AuthOptions {
   /**
-   * The ID of the ADAL app registration to authenticate with.
+   * The ID of the Azure AD app registration to authenticate with.
    */
   clientId: string;
 
