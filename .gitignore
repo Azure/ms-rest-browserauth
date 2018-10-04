@@ -85,7 +85,11 @@ output/*
 
 # Typescript output
 dist/
-es/
 *.js
 *.js.map
+*.d.ts
+*.d.ts.map
 
+# Rollup
+!rollup.config.js
+stats.html
