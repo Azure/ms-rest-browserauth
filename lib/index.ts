@@ -3,7 +3,7 @@
 
 import AuthenticationContext from "adal-angular";
 import { RestError, ServiceClientCredentials, HttpHeaders, ServiceClient } from "ms-rest-js";
-import { AzureEnvironment } from "ms-rest-azure-env";
+import { Environment } from "ms-rest-azure-env";
 
 export interface AuthOptions {
   /**
@@ -24,7 +24,7 @@ export interface AuthOptions {
   /**
    * The environment to use for authentication. Defaults to AzureEnvironment.Azure.
    */
-  environment?: AzureEnvironment;
+  environment?: Environment;
 
   /**
    * The resource to authenticate to. Defaults to environment.resourceManagerEndpointUrl.
@@ -93,7 +93,7 @@ export type LoginResult = LoggedIn | NotLoggedIn;
 export class AuthManager {
   private readonly _ctx: AuthenticationContext;
   private readonly _resource: string;
-  private readonly _env: AzureEnvironment;
+  private readonly _env: Environment;
 
   constructor(opts: AuthOptions) {
     this._ctx = new AuthenticationContext({
@@ -102,7 +102,7 @@ export class AuthManager {
       redirectUri: opts.redirectUri,
       cacheLocation: "localStorage"
     });
-    this._env = opts.environment || AzureEnvironment.Azure;
+    this._env = opts.environment || Environment.AzureCloud;
     this._resource = opts.resource || this._env.resourceManagerEndpointUrl;
 
     // These calls put the AuthenticationContext in a proper state to complete the login.
@@ -134,7 +134,7 @@ export class AuthManager {
         } else if (errCode || !token) {
           reject(new RestError(errMessage || "Unknown error", errCode));
         } else {
-          const creds: ServiceClientCredentials & { environment: AzureEnvironment } = {
+          const creds: ServiceClientCredentials & { environment: Environment } = {
             environment: this._env,
             signRequest: req => {
               return new Promise((resolve, reject) => {
