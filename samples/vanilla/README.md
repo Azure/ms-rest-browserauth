@@ -4,4 +4,6 @@ A minimal sample which shows how to use ms-rest-browserauth.
 
 ## How to run
 
-Run `npm start` and navigate to localhost:3000
+- Replace the placeholder values in index.html with your own clientId and tenant
+- Ensure that localhost:3000 is an accepted reply URL in Azure Portal for your AD app
+- Run `npm start` and navigate to localhost:3000
