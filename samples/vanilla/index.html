@@ -7,7 +7,7 @@
     <script src="node_modules/ms-rest-js/dist/msRest.browser.js"></script>
     <script src="node_modules/ms-rest-browserauth/dist/msAuth.js"></script>
     <script>
-      const authManager = new msAuth.AuthManager({
+      var authManager = new msAuth.AuthManager({
         clientId: "<client id for your Azure AD app>",
         tenant: "<optional tenant for your organization>"
       });
@@ -16,9 +16,9 @@
         authManager.login();
       }
 
-      document.addEventListener("DOMContentLoaded", () => {
-        authManager.finalizeLogin().then(res => {
-          const results = document.getElementById('results');
+      document.addEventListener("DOMContentLoaded", function () {
+        authManager.finalizeLogin().then(function (res) {
+          var results = document.getElementById('results');
           if (!res.isLoggedIn) {
             results.textContent = "Not logged in";
           } else {
