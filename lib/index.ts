@@ -22,7 +22,7 @@ export interface AuthOptions {
   redirectUri?: string;
 
   /**
-   * The environment to use for authentication. Defaults to AzureEnvironment.Azure.
+   * The environment to use for authentication. Defaults to Environment.AzureCloud.
    */
   environment?: Environment;
 
