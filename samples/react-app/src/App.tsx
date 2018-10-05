@@ -1,11 +1,12 @@
 import { AuthManager, Subscription } from "ms-rest-browserauth";
 import { ServiceClientCredentials } from "ms-rest-js";
+import { clientId, tenant, subscriptionId } from "./constants";
 
 import {
   StorageManagementClientContext,
   StorageAccounts,
   StorageManagementModels
-} from '@azure/arm-storage/2018-02-01';
+} from '@azure/arm-storage-2018-02-01';
 
 import * as React from 'react';
 import './App.css';
@@ -30,10 +31,7 @@ class App extends React.Component<{}, State> {
       isLoggedIn: "unknown"
     };
 
-    this.authManager = new AuthManager({
-      clientId: "696e3a0a-4148-440f-b5af-fbeadeabe3d1",
-      tenant: "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a"
-    });
+    this.authManager = new AuthManager({ clientId, tenant });
 
     this.authManager.finalizeLogin().then(result => {
       if (result.isLoggedIn) {
@@ -60,7 +58,7 @@ class App extends React.Component<{}, State> {
   }
 
   onListStorageAccountsClick = async () => {
-    const azStorageCtx = new StorageManagementClientContext(this.state.creds!, '0b1f6471-1bf0-4dda-aec3-cb9272f09590');
+    const azStorageCtx = new StorageManagementClientContext(this.state.creds!, subscriptionId);
     const accountsClient = new StorageAccounts(azStorageCtx);
     const accounts = await accountsClient.list();
     this.setState({ accounts });
