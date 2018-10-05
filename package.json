@@ -5,7 +5,7 @@
     "email": "azsdkteam@microsoft.com",
     "url": "https://github.com/Azure/ms-rest-browserauth"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Browser-specific authentication library for Azure services",
   "tags": [
     "isomorphic",
@@ -43,8 +43,8 @@
   "dependencies": {
     "adal-angular": "^1.0.17",
     "ms-rest-azure-env": "^1.0.0",
-    "ms-rest-js": "^0.22.423",
-    "tslib": "^1.9.2"
+    "ms-rest-js": "^1.0.439",
+    "tslib": "^1.9.3"
   },
   "devDependencies": {
     "@types/adal-angular": "^1.0.1",
