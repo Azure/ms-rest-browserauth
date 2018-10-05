@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ms-rest-browserauth sample</title>
+    <button id="login" onclick="onLoginClick()">Login</button>
+    <div id="results"></div>
+    <script src="node_modules/ms-rest-js/dist/msRest.browser.js"></script>
+    <script src="node_modules/ms-rest-browserauth/dist/msAuth.js"></script>
+    <script>
+      var authManager = new msAuth.AuthManager({
+        clientId: "<client id for your Azure AD app>",
+        tenant: "<optional tenant for your organization>"
+      });
+
+      function onLoginClick() {
+        authManager.login();
+
+        // To let users log out, just call the logout function
+        // authManager.logout();
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        authManager.finalizeLogin().then(function (res) {
+          var results = document.getElementById('results');
+          if (!res.isLoggedIn) {
+            results.textContent = "Not logged in";
+          } else {
+            // These credentials can be provided to any azure-sdk-for-js client class.
+            const creds = res.creds;
+            results.textContent = "Subscriptions: " + JSON.stringify(res.availableSubscriptions);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

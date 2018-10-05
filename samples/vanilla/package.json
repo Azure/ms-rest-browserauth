@@ -1,0 +1,14 @@
+{
+  "name": "vanilla-sample",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sample for ms-rest-browserauth",
+  "devDependencies": {
+    "ms-rest-browserauth": "^0.1.0",
+    "ms-rest-js": "^1.0.439",
+    "serve": "^10.0.2"
+  },
+  "scripts": {
+    "start": "serve -p 3000"
+  }
+}
