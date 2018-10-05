@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@azure/arm-storage": "file:../../../azure-sdk-for-js/packages/arm-storage",
+    "@azure/arm-storage-2018-02-01": "^1.0.0",
     "adal-angular": "^1.0.17",
-    "ms-rest-azure-js": "^0.17.164",
-    "ms-rest-browserauth": "file:../../",
-    "ms-rest-js": "^0.22.423",
+    "ms-rest-azure-js": "^1.0.166",
+    "ms-rest-browserauth": "^0.1.1",
+    "ms-rest-js": "^1.0.439",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
-    "react-scripts-ts": "2.17.0"
+    "react-scripts-ts": "3.1.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",
