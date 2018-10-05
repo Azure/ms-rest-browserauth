@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ms-rest-browserauth sample</title>
+    <button id="login" onclick="onLoginClick()">Login</button>
+    <div id="results"></div>
+    <script src="node_modules/ms-rest-js/dist/msRest.browser.js"></script>
+    <script src="node_modules/ms-rest-browserauth/dist/msAuth.js"></script>
+    <script>
+      const authManager = new msAuth.AuthManager({
+        clientId: "696e3a0a-4148-440f-b5af-fbeadeabe3d1",
+        tenant: "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a"
+      });
+
+      function onLoginClick() {
+        authManager.login();
+      }
+
+      document.addEventListener("readystatechange", () => {
+        authManager.finalizeLogin().then(res => {
+          const results = document.getElementById('results');
+          if (!res.isLoggedIn) {
+            results.textContent = "Not logged in";
+          } else {
+            // These credentials can be provided to any azure-sdk-for-js client class.
+            const creds = res.creds;
+
+            results.textContent = "Subscriptions: " + JSON.stringify(res.availableSubscriptions);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
