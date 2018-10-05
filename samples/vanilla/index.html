@@ -16,7 +16,7 @@
         authManager.login();
       }
 
-      document.addEventListener("readystatechange", () => {
+      document.addEventListener("DOMContentLoaded", () => {
         authManager.finalizeLogin().then(res => {
           const results = document.getElementById('results');
           if (!res.isLoggedIn) {
@@ -24,7 +24,6 @@
           } else {
             // These credentials can be provided to any azure-sdk-for-js client class.
             const creds = res.creds;
-
             results.textContent = "Subscriptions: " + JSON.stringify(res.availableSubscriptions);
           }
         });
