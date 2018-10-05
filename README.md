@@ -38,6 +38,7 @@ Below is a basic sample with authenticates via Azure Active Directory. See the [
   <body>
   </body>
 </html>
+```
 
 # Contributing
 
