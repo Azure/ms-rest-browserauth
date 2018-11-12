@@ -13,14 +13,14 @@ const banner = `/** @license ms-rest-browserauth
  */
 const config = {
   input: './es/lib/index.js',
-  external: ["ms-rest-js"],
+  external: ["@azure/ms-rest-js"],
   output: {
     file: "./dist/msAuth.js",
     format: "umd",
     name: "msAuth",
     sourcemap: true,
     globals: {
-      "ms-rest-js": "msRest"
+      "@azure/ms-rest-js": "msRest"
     },
     banner
   },
