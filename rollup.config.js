@@ -1,6 +1,7 @@
 import nodeResolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import visualizer from "rollup-plugin-visualizer";
+import json from 'rollup-plugin-json';
 
 const banner = `/** @license ms-rest-browserauth
  * Copyright (c) Microsoft Corporation. All rights reserved.
@@ -26,7 +27,8 @@ const config = {
   plugins: [
     nodeResolve({ module: true }),
     commonjs(),
-    visualizer({ filename: "dist/node-stats.html", sourcemap: true })
+    visualizer({ filename: "dist/node-stats.html", sourcemap: true }),
+    json()
   ]
 }
 
