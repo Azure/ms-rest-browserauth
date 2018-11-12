@@ -2,8 +2,8 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 import AuthenticationContext from "adal-angular";
-import { RestError, ServiceClientCredentials, HttpHeaders, ServiceClient } from "ms-rest-js";
-import { Environment } from "ms-rest-azure-env";
+import { RestError, ServiceClientCredentials, HttpHeaders, ServiceClient } from "@azure/ms-rest-js";
+import { Environment } from "@azure/ms-rest-azure-env";
 
 export interface AuthOptions {
   /**

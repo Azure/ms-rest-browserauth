@@ -1,5 +1,5 @@
 {
-  "name": "ms-rest-browserauth",
+  "name": "@azure/ms-rest-browserauth",
   "author": {
     "name": "Microsoft Corporation",
     "email": "azsdkteam@microsoft.com",
@@ -42,8 +42,8 @@
   "license": "MIT",
   "dependencies": {
     "adal-angular": "^1.0.17",
-    "ms-rest-azure-env": "^1.0.0",
-    "ms-rest-js": "^1.0.439",
+    "@azure/ms-rest-azure-env": "^1.1.0",
+    "@azure/ms-rest-js": "^1.1.0",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
@@ -62,6 +62,7 @@
     "npm-run-all": "^4.1.2",
     "rollup": "^0.66.4",
     "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-visualizer": "^0.9.2",
     "semver": "^5.5.0",
