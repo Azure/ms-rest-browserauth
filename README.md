@@ -1,4 +1,4 @@
-# ms-rest-browserauth
+# ms-rest-browserauth [![Build Status](https://dev.azure.com/azure-public/adx/_apis/build/status/public.Azure.ms-rest-browserauth)](https://dev.azure.com/azure-public/adx/_build/latest?definitionId=8)
 
 Provides browser-based authentication for Azure resources. Designed for use with libraries in [azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js).
 
