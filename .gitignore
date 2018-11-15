@@ -93,3 +93,6 @@ dist/
 # Rollup
 !rollup.config.js
 stats.html
+
+# package-lock.json
+package-lock.json
