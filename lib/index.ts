@@ -30,6 +30,11 @@ export interface AuthOptions {
    * The resource to authenticate to. Defaults to environment.resourceManagerEndpointUrl.
    */
   resource?: string;
+
+  /**
+   * The Azure Active Directory Instance. Defaults to `https://login.microsoftonline.com/`.
+   */
+  instance?: string;
 }
 
 export interface Subscription {
@@ -100,8 +105,10 @@ export class AuthManager {
       clientId: opts.clientId,
       tenant: opts.tenant,
       redirectUri: opts.redirectUri,
-      cacheLocation: "localStorage"
+      cacheLocation: "localStorage", 
+      instance: opts.instance
     });
+    this._ctx
     this._env = opts.environment || Environment.AzureCloud;
     this._resource = opts.resource || this._env.resourceManagerEndpointUrl;
 
