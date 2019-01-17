@@ -105,10 +105,9 @@ export class AuthManager {
       clientId: opts.clientId,
       tenant: opts.tenant,
       redirectUri: opts.redirectUri,
-      cacheLocation: "localStorage", 
+      cacheLocation: "localStorage",
       instance: opts.instance
     });
-    this._ctx
     this._env = opts.environment || Environment.AzureCloud;
     this._resource = opts.resource || this._env.resourceManagerEndpointUrl;
 
