@@ -1,14 +1,9 @@
-trigger:
-- master
-
 jobs:
 - job: Test
   pool:
     vmImage: 'Ubuntu 16.04'
   strategy:
     matrix:
-      Node8:
-        node.version: 8.x
       Node10:
         node.version: 10.x
       Node11:
@@ -34,24 +29,24 @@ jobs:
       codeCoverageTool: Cobertura
       summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
       reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
+
 - job: Build
   pool:
     vmImage: 'Ubuntu 16.04'
   steps:
   - task: Npm@1
-    displayName: 'npm pack'
+    displayName: 'npm install'
     inputs:
       command: custom
       verbose: false
-      customCommand: pack
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: drop'
+      customCommand: install
+  - task: Npm@1
+    displayName: 'npm run build'
     inputs:
-      Contents: '*.tgz'
-      TargetFolder: drop
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: $(Build.SourcesDirectory)/drop
+      command: custom
+      verbose: false
+      customCommand: run build
+
 - job: Check_PackageJson_Version_Number
   pool:
     vmImage: 'Ubuntu 16.04'
