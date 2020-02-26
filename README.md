@@ -22,24 +22,24 @@ Below is a basic sample with authenticates via Azure Active Directory. See the [
 
   </head>
   <body>
-      <script>
-      const authManager = new msAuth.AuthManager({
-        clientId: "<client id for your Azure AD app>",
-        tenant: "<optional tenant for your organization>"
-      });
-      authManager.finalizeLogin().then((res) => {
-        if (!res.isLoggedIn) {
-          // Usually, this will cause redirects to the Azure AD login page.
-          // In practice, you may wish to call this method in the onClick for a login button on the page.
-          authManager.login();
-        }
+  </body>
+  <script>
+    const authManager = new msAuth.AuthManager({
+      clientId: "51b40eba-8fd1-442d-b2a0-02fb6a94c12b",
+      tenant: "08a83339-90e7-49bf-9075-957ccd561bf1"
+    });
+    authManager.finalizeLogin().then((res) => {
+      if (!res.isLoggedIn) {
+        // Usually, this will cause redirects to the Azure AD login page.
+        // In practice, you may wish to call this method in the onClick for a login button on the page.
+        authManager.login();
+      }
 
-        // These credentials can be passed to any of the Client classes provided in azure-sdk-for-js to authenticate
-        const credentials = res.creds;
-        console.log("Available subscriptions: ", res.availableSubscriptions);
-      });
-    </script>
-</body>
+      // These credentials can be passed to any of the Client classes provided in azure-sdk-for-js to authenticate
+      const credentials = res.creds;
+      console.log("Available subscriptions: ", res.availableSubscriptions);
+    });
+  </script>
 </html>
 ```
 
