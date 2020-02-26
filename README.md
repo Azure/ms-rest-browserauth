@@ -16,8 +16,13 @@ Below is a basic sample with authenticates via Azure Active Directory. See the [
 <html lang="en">
   <head>
     <title>ms-rest-browserauth sample</title>
-    <script src="node_modules/ms-rest-browserauth/dist/msAuth.js"></script>
-    <script>
+    <script src="node_modules/@azure/ms-rest-js/dist/msRest.browser.js"></script>
+    <script src="node_modules/@azure/ms-rest-azure-js/dist/msRestAzure.js"></script>
+    <script src="node_modules/@azure/ms-rest-browserauth/dist/msAuth.js"></script>
+
+  </head>
+  <body>
+      <script>
       const authManager = new msAuth.AuthManager({
         clientId: "<client id for your Azure AD app>",
         tenant: "<optional tenant for your organization>"
@@ -34,9 +39,7 @@ Below is a basic sample with authenticates via Azure Active Directory. See the [
         console.log("Available subscriptions: ", res.availableSubscriptions);
       });
     </script>
-  </head>
-  <body>
-  </body>
+</body>
 </html>
 ```
 
