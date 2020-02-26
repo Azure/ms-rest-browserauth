@@ -11,32 +11,36 @@ Before using this library, it's necessary to create an Azure AD app in the porta
 
 Below is a basic sample with authenticates via Azure Active Directory. See the [samples](samples) for more detailed usage.
 
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>ms-rest-browserauth sample</title>
-    <script src="node_modules/ms-rest-browserauth/dist/msAuth.js"></script>
-    <script>
-      const authManager = new msAuth.AuthManager({
-        clientId: "<client id for your Azure AD app>",
-        tenant: "<optional tenant for your organization>"
-      });
-      authManager.finalizeLogin().then((res) => {
-        if (!res.isLoggedIn) {
-          // Usually, this will cause redirects to the Azure AD login page.
-          // In practice, you may wish to call this method in the onClick for a login button on the page.
-          authManager.login();
-        }
+    <script src="node_modules/@azure/ms-rest-js/dist/msRest.browser.js"></script>
+    <script src="node_modules/@azure/ms-rest-azure-js/dist/msRestAzure.js"></script>
+    <script src="node_modules/@azure/ms-rest-browserauth/dist/msAuth.js"></script>
 
-        // These credentials can be passed to any of the Client classes provided in azure-sdk-for-js to authenticate
-        const credentials = res.creds;
-        console.log("Available subscriptions: ", res.availableSubscriptions);
-      });
-    </script>
   </head>
   <body>
   </body>
+  <script>
+  const authManager = new msAuth.AuthManager({
+    clientId: "<client id for your Azure AD app>",
+    tenant: "<optional tenant for your organization>"
+  });
+  authManager.finalizeLogin().then((res) => {
+    if (!res.isLoggedIn) {
+      // Usually, this will cause redirects to the Azure AD login page.
+      // In practice, you may wish to call this method in the onClick for a login button on the page.
+      authManager.login();
+    }
+
+    // These credentials can be passed to any of the Client classes provided in azure-sdk-for-js to authenticate
+    const credentials = res.creds;
+    console.log("Available subscriptions: ", res.availableSubscriptions);
+  });
+</script>
 </html>
 ```
 
