@@ -5,22 +5,7 @@ import AuthenticationContext from "adal-angular";
 import { RestError, ServiceClientCredentials, HttpHeaders, ServiceClient } from "@azure/ms-rest-js";
 import { Environment } from "@azure/ms-rest-azure-env";
 
-export interface AuthOptions {
-  /**
-   * The ID of the Azure AD app registration to authenticate with.
-   */
-  clientId: string;
-
-  /**
-   * The tenant to authenticate to. Defaults to "common".
-   */
-  tenant?: string;
-
-  /**
-   * The location to return to after acquiring a token via redirect. Defaults to window.location.href.
-   */
-  redirectUri?: string;
-
+export interface AuthOptions extends AuthenticationContext.Options {
   /**
    * The environment to use for authentication. Defaults to Environment.AzureCloud.
    */
@@ -96,12 +81,9 @@ export class AuthManager {
   private readonly _env: Environment;
 
   constructor(opts: AuthOptions) {
-    this._ctx = new AuthenticationContext({
-      clientId: opts.clientId,
-      tenant: opts.tenant,
-      redirectUri: opts.redirectUri,
-      cacheLocation: "localStorage"
-    });
+    const authContextOptions: AuthenticationContext.Options = opts;
+    authContextOptions.cacheLocation = authContextOptions.cacheLocation || "localStorage";
+    this._ctx = new AuthenticationContext(authContextOptions);
     this._env = opts.environment || Environment.AzureCloud;
     this._resource = opts.resource || this._env.resourceManagerEndpointUrl;
 
