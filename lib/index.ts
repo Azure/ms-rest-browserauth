@@ -1,11 +1,31 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-import AuthenticationContext from "adal-angular";
+import AuthenticationContext, { TokenCallback } from "adal-angular";
 import { RestError, ServiceClientCredentials, HttpHeaders, ServiceClient } from "@azure/ms-rest-js";
 import { Environment } from "@azure/ms-rest-azure-env";
 
-export interface AuthOptions extends AuthenticationContext.Options {
+export interface AuthOptions {
+  /**
+   * The ID of the Azure AD app registration to authenticate with.
+   */
+  clientId: string;
+
+  /**
+   * The tenant to authenticate to. Defaults to "common".
+   */
+  tenant?: string;
+
+  /**
+   * The location to return to after acquiring a token via redirect. Defaults to window.location.href.
+   */
+  redirectUri?: string;
+
+  /**
+   * Set this to true to enable login in a popup window instead of a full redirect. Defaults to `false`.
+   */
+  popUp?: boolean;
+
   /**
    * The environment to use for authentication. Defaults to Environment.AzureCloud.
    */
@@ -15,6 +35,11 @@ export interface AuthOptions extends AuthenticationContext.Options {
    * The resource to authenticate to. Defaults to environment.resourceManagerEndpointUrl.
    */
   resource?: string;
+
+  /**
+   * Callback to be invoked when a token is acquired.
+   */
+  callback?: TokenCallback;
 }
 
 export interface Subscription {
@@ -81,9 +106,7 @@ export class AuthManager {
   private readonly _env: Environment;
 
   constructor(opts: AuthOptions) {
-    const authContextOptions: AuthenticationContext.Options = opts;
-    authContextOptions.cacheLocation = authContextOptions.cacheLocation || "localStorage";
-    this._ctx = new AuthenticationContext(authContextOptions);
+    this._ctx = new AuthenticationContext({ ...opts, cacheLocation: "localStorage" });
     this._env = opts.environment || Environment.AzureCloud;
     this._resource = opts.resource || this._env.resourceManagerEndpointUrl;
 
