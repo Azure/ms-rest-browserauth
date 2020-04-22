@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-import AuthenticationContext, { TokenCallback } from "adal-angular";
+import AuthenticationContext from "adal-angular";
 import { RestError, ServiceClientCredentials, HttpHeaders, ServiceClient } from "@azure/ms-rest-js";
 import { Environment } from "@azure/ms-rest-azure-env";
 
@@ -35,11 +35,6 @@ export interface AuthOptions {
    * The resource to authenticate to. Defaults to environment.resourceManagerEndpointUrl.
    */
   resource?: string;
-
-  /**
-   * Callback to be invoked when a token is acquired.
-   */
-  callback?: TokenCallback;
 }
 
 export interface Subscription {
