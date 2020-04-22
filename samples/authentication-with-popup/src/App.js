@@ -27,8 +27,7 @@ function loginWithPopup() {
   if (!authRes) {
     const authManager = new msRestBrowserAuth.AuthManager({
       clientId: clientId,
-      popUp: true,
-      callback: function callbackFunction(errorDesc, token, error) { }
+      popUp: true
     });
     authManager.finalizeLogin().then((authres) => {
       if (!authres.isLoggedIn) {
