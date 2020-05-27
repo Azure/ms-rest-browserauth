@@ -1,3 +1,7 @@
+## 1.0.0 - 2020-05-27
+Updating `@azure/ms-rest-azure-env` and `@azure/ms-rest-js` dependencies to allow authentication in the browsers for the Azure SDKs that have moved on to using v2 of `@azure/ms-rest-js`.
+[PR 30](https://github.com/Azure/ms-rest-browserauth/pull/30)
+
 ## 0.1.5 - 2020-04-21
 Allow `popUp`(boolean) option to be passed to the AuthManager. Setting this option to true enables login through a popup window instead of a full redirect. The default value is `false`.
 [PR 28](https://github.com/Azure/ms-rest-browserauth/pull/28)
