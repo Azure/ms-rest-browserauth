@@ -6,7 +6,7 @@
   "devDependencies": {
     "ms-rest-browserauth": "^0.1.0",
     "ms-rest-js": "^1.0.439",
-    "serve": "^10.0.2"
+    "serve": "^10.1.2"
   },
   "scripts": {
     "start": "serve -p 3000"
