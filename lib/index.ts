@@ -22,6 +22,11 @@ export interface AuthOptions {
   redirectUri?: string;
 
   /**
+   * Set this to true to enable login in a popup window instead of a full redirect. Defaults to `false`.
+   */
+  popUp?: boolean;
+
+  /**
    * The environment to use for authentication. Defaults to Environment.AzureCloud.
    */
   environment?: Environment;
@@ -96,12 +101,7 @@ export class AuthManager {
   private readonly _env: Environment;
 
   constructor(opts: AuthOptions) {
-    this._ctx = new AuthenticationContext({
-      clientId: opts.clientId,
-      tenant: opts.tenant,
-      redirectUri: opts.redirectUri,
-      cacheLocation: "localStorage"
-    });
+    this._ctx = new AuthenticationContext({ ...opts, cacheLocation: "localStorage" });
     this._env = opts.environment || Environment.AzureCloud;
     this._resource = opts.resource || this._env.resourceManagerEndpointUrl;
 
