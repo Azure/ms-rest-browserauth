@@ -1,3 +1,6 @@
+## 1.0.1 - 2020-10-15
+Fixed sample documentation in README.md [PR 19](https://github.com/Azure/ms-rest-browserauth/pull/19)
+
 ## 1.0.0 - 2020-05-27
 Updating `@azure/ms-rest-azure-env` and `@azure/ms-rest-js` dependencies to allow authentication in the browsers for the Azure SDKs that have moved on to using v2 of `@azure/ms-rest-js`.
 [PR 30](https://github.com/Azure/ms-rest-browserauth/pull/30)
