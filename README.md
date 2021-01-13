@@ -12,7 +12,7 @@ Before using this library, it's necessary to create an Azure App Registration in
 
 - Please Ensure that you have followed the steps under `MSAL.js 1.0 with Implicit Flow` as well (this library uses ADAL.js which implements the Implicit Flow).
 
-Below is a basic sample with authenticates via Azure Active Directory. See the [samples](samples) for more detailed usage.
+Below is a basic sample which authenticates via Azure Active Directory. See the [samples](samples) for more detailed usage.
 
 ```html
 <!DOCTYPE html>
