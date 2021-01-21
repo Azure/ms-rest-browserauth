@@ -7,10 +7,12 @@ Provides browser-based authentication for Azure resources. Designed for use with
 - node.js version > 6.x
 
 ## Getting Started
-Before using this library, it's necessary to create an Azure AD app in the portal. See [doc/app-creation.md](doc/app-creation.md) for instructions.
 
-Below is a basic sample with authenticates via Azure Active Directory. See the [samples](samples) for more detailed usage.
+Before using this library, it's necessary to create an Azure App Registration in the portal. See [this documentation](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) for instructions.
 
+- Please ensure that you have followed the steps under `MSAL.js 1.0 with Implicit Flow` as well (this library uses ADAL.js which implements the Implicit Flow).
+
+Below is a basic sample which authenticates via Azure Active Directory. See the [samples](samples) for more detailed usage.
 
 ```html
 <!DOCTYPE html>
