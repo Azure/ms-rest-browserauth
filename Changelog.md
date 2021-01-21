@@ -1,4 +1,4 @@
-## 1.0.2 - 2021-01-11
+## 1.0.2 - 2021-01-21
 
 Retired outdated app-creation doc [PR 37](https://github.com/Azure/ms-rest-browserauth/pull/37)
 
