@@ -1,17 +1,16 @@
-import { AuthManager, Subscription } from "ms-rest-browserauth";
-import { ServiceClientCredentials } from "ms-rest-js";
+import { AuthManager, Subscription } from "@azure/ms-rest-browserauth";
+import { ServiceClientCredentials } from "@azure/ms-rest-js";
 import { clientId, tenant, subscriptionId } from "./constants";
 
 import {
   StorageManagementClientContext,
   StorageAccounts,
-  StorageManagementModels
-} from '@azure/arm-storage-2018-02-01';
+  StorageManagementModels,
+} from "@azure/arm-storage";
 
-import * as React from 'react';
-import './App.css';
-import logo from './logo.svg';
-
+import * as React from "react";
+import "./App.css";
+import logo from "./logo.svg";
 
 interface State {
   accounts: StorageManagementModels.StorageAccount[];
