@@ -27,22 +27,22 @@ class App extends React.Component<{}, State> {
     this.state = {
       accounts: [],
       subscriptions: [],
-      isLoggedIn: "unknown"
+      isLoggedIn: "unknown",
     };
 
     this.authManager = new AuthManager({ clientId, tenant });
 
-    this.authManager.finalizeLogin().then(result => {
+    this.authManager.finalizeLogin().then((result) => {
       if (result.isLoggedIn) {
         this.setState({
           isLoggedIn: true,
           creds: result.creds,
-          subscriptions: result.availableSubscriptions
+          subscriptions: result.availableSubscriptions,
         });
       } else {
         this.setState({
           isLoggedIn: false,
-          creds: undefined
+          creds: undefined,
         });
       }
     });
@@ -54,25 +54,34 @@ class App extends React.Component<{}, State> {
     } else {
       this.authManager.login();
     }
-  }
+  };
 
   onListStorageAccountsClick = async () => {
-    const azStorageCtx = new StorageManagementClientContext(this.state.creds!, subscriptionId);
+    const azStorageCtx = new StorageManagementClientContext(
+      this.state.creds!,
+      subscriptionId
+    );
     const accountsClient = new StorageAccounts(azStorageCtx);
     const accounts = await accountsClient.list();
     this.setState({ accounts });
-  }
+  };
 
   public render() {
     const isLoggedIn = this.state.isLoggedIn;
 
-    const loginButton = typeof isLoggedIn === "boolean"
-      ? <a href="#" onClick={this.onLoginButtonClick}>{isLoggedIn ? "Log out" : "Login"}</a>
-      : undefined;
+    const loginButton =
+      typeof isLoggedIn === "boolean" ? (
+        <a href="#" onClick={this.onLoginButtonClick}>
+          {isLoggedIn ? "Log out" : "Login"}
+        </a>
+      ) : undefined;
 
-    const listButton = isLoggedIn === true
-      ? <button onClick={this.onListStorageAccountsClick}>List Storage Accounts</button>
-      : undefined;
+    const listButton =
+      isLoggedIn === true ? (
+        <button onClick={this.onListStorageAccountsClick}>
+          List Storage Accounts
+        </button>
+      ) : undefined;
 
     return (
       <div className="App">
@@ -85,11 +94,17 @@ class App extends React.Component<{}, State> {
         <div>{listButton}</div>
 
         <h2>Subscriptions</h2>
-        <ul>{this.state.subscriptions.map(s => <li key={s.id}>{s.name}</li>)}</ul>
+        <ul>
+          {this.state.subscriptions.map((s) => (
+            <li key={s.id}>{s.name}</li>
+          ))}
+        </ul>
 
         <h2>Storage Accounts</h2>
         <ul>
-          {this.state.accounts.map(acc => <li key={acc.id}>{acc.name}</li>)}
+          {this.state.accounts.map((acc) => (
+            <li key={acc.id}>{acc.name}</li>
+          ))}
         </ul>
       </div>
     );
