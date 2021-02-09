@@ -5,7 +5,7 @@
     "email": "azsdkteam@microsoft.com",
     "url": "https://github.com/Azure/ms-rest-browserauth"
   },
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Browser-specific authentication library for Azure services",
   "tags": [
     "isomorphic",
