@@ -5,7 +5,7 @@ import { clientId, tenant, subscriptionId } from "./constants";
 import {
   StorageManagementClientContext,
   StorageAccounts,
-  StorageManagementModels,
+  StorageManagementModels
 } from "@azure/arm-storage";
 
 import * as React from "react";
@@ -27,7 +27,7 @@ class App extends React.Component<{}, State> {
     this.state = {
       accounts: [],
       subscriptions: [],
-      isLoggedIn: "unknown",
+      isLoggedIn: "unknown"
     };
 
     this.authManager = new AuthManager({ clientId, tenant });
@@ -37,12 +37,12 @@ class App extends React.Component<{}, State> {
         this.setState({
           isLoggedIn: true,
           creds: result.creds,
-          subscriptions: result.availableSubscriptions,
+          subscriptions: result.availableSubscriptions
         });
       } else {
         this.setState({
           isLoggedIn: false,
-          creds: undefined,
+          creds: undefined
         });
       }
     });
