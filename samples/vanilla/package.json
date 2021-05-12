@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "description": "Sample for ms-rest-browserauth",
   "devDependencies": {
-    "ms-rest-browserauth": "^0.1.0",
-    "ms-rest-js": "^1.0.439",
+    "@azure/ms-rest-browserauth": "^1.0.2",
+    "@azure/ms-rest-js": "^2.5.0",
     "serve": "^10.0.2"
   },
   "scripts": {
