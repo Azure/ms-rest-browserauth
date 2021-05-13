@@ -6,7 +6,7 @@
     "@azure/arm-storage": "^15.2.0",
     "@azure/ms-rest-azure-js": "^2.0.1",
     "@azure/ms-rest-browserauth": "^1.0.2",
-    "@azure/ms-rest-js": "^2.0.4",
+    "@azure/ms-rest-js": "^2.5.0",
     "adal-angular": "^1.0.18",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
