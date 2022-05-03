@@ -22,4 +22,6 @@ This sample was created using [create-react-app](https://create-react-app.dev/).
 - Copy "sample.env" as ".env" and add your own clientId, tenantId, and subscriptionId values
 - Run `npm install` and `npm start`
 
+> Some browsers may disable third party cookies by default. Since @azure/ms-rest-browserauth uses [Implicit Flow](https://docs.microsoft.com/en-us/azure/active-directory-b2c/implicit-flow-single-page-application) to authenticate, make sure that the browser you use allows third party cookies to be stored.
+
 Please see [src/App.tsx](src/App.tsx) for the most relevant example code.
