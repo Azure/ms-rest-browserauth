@@ -1,3 +1,5 @@
+**Note:** This package has been deprecated in favor of the new `@azure/identity` package from [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js). Please check out the `InteractiveBrowserCredential` provided by `@azure/identity` package and also [the sample of using `@azure/msal-browser`](https://github.com/Azure/azure-sdk-for-js/blob/dc5f9743b05ea78f938eba31cbe704150889490c/sdk/identity/identity/samples/AzureIdentityExamples.md#authenticating-with-the-azuremsal-browser-public-client).
+
 # ms-rest-browserauth [![Build Status](https://dev.azure.com/azure-public/adx/_apis/build/status/public.Azure.ms-rest-browserauth)](https://dev.azure.com/azure-public/adx/_build/latest?definitionId=8)
 
 Provides browser-based authentication for Azure resources. Designed for use with libraries in [azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js).
